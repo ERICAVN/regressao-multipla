@@ -15,23 +15,24 @@ auto <- data.frame(MPG = auto_O[,1],cilindros= auto_O[,2], deslocamento = auto_O
 attach(auto)# fixar as variáveis
 as.numeric(potencia)
 
-mod01<- lm(data = auto, MPG ~ peso)
-summary(mod01)
-
+#modelo de regressão linear simples
+mod01<- lm(data = auto, MPG ~ peso) # criando um modelo com apenas uma variável
+summary(mod01) # pedindo o resumo do modelo
 (MPG_01<- 46.3173644  - 0.0076766*peso)# modelo de regressão linear simples
 
 
 # resumo dos dados 
-summary(auto)# dá o resumo de cada variável (e temos problema com potência)
+summary(auto)# dá o resumo de cada variável (e temos problema com a vraiável potência)
 summary(auto$peso)
 summary(auto$cilindros)
 summary(auto$deslocamento)
 summary(auto$aceleracao)
 
-plot(mod01$residuals, ylab="Resíduos")# resíduos com variância constante e média zero
+plot(mod01$residuals, ylab="Resíduos")# resíduos com variância constante e média zero para o primeiro modelo criado
+# Box-plot para vermos como os dados se comportam
 boxplot(auto$MPG)
 boxplot(auto$peso)
-boxplot(auto$cilindros)# não faz sentido
+boxplot(auto$cilindros)
 boxplot(auto$deslocamento)
 boxplot(auto$aceleracao)
 
